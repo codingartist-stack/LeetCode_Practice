@@ -13,28 +13,32 @@
 // Input: s = "(]"
 // Output: false
 
+//hint says to us a stack...
+//gave up trying to figure it out going to copy a solution and run through it to understand it better.
+
 var isValid = function (s) {
-  let result = false;
-
-  for (let i = 0; i < s.length - 1; i++) {
-    let current = s[i];
-    let next = s[i + 1];
-
-    if (current === '(' && next === ')') {
-      result = true;
-    } else if (current === '[' && next === ']') {
-      result = true;
-    } else if (current === '{' && next === '}') {
-      result = true;
+  stack = [];
+  for (symbol of s) {
+    if (symbol === '(' || symbol === '[' || symbol === '{') {
+      stack.push(symbol);
     } else {
-      result = false;
+      if (
+        !stack.length || //stack is empty
+        (symbol === ')' && stack[stack.length - 1] !== '(') ||
+        (symbol === ']' && stack[stack.length - 1] !== '[') ||
+        (symbol === '}' && stack[stack.length - 1] !== '{')
+      ) {
+        return false;
+      }
+      stack.pop();
     }
   }
-  return result;
+
+  return !stack.length;
 };
 
 const example1 = '()';
 const example2 = '()[]{}';
 const example3 = '(]';
 
-isValid(example2);
+isValid(example3);
