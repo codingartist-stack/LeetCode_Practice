@@ -14,9 +14,16 @@
 // Output: ""
 // Explanation: There is no common prefix among the input strings.
 
-/**
- * @param {string[]} strs
- * @return {string}
- */
+var longestCommonPrefix = function (strs) {
+  let commonLetters = '';
 
-var longestCommonPrefix = function (strs) {};
+  if (strs.length === 0) {
+    return commonLetters;
+  }
+};
+
+let example1 = ['flower', 'flow', 'flight'];
+let example2 = ['dog', 'racecar', 'car'];
+
+longestCommonPrefix(example1);
+// longestCommonPrefix(example2);
