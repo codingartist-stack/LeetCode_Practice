@@ -16,9 +16,19 @@
 var isValid = function (s) {
   let result = false;
 
-  for (let i = 0; i < s.length; i++) {
+  for (let i = 0; i < s.length - 1; i++) {
     let current = s[i];
     let next = s[i + 1];
+
+    if (current === '(' && next === ')') {
+      result = true;
+    } else if (current === '[' && next === ']') {
+      result = true;
+    } else if (current === '{' && next === '}') {
+      result = true;
+    } else {
+      result = false;
+    }
   }
   return result;
 };
@@ -27,4 +37,4 @@ const example1 = '()';
 const example2 = '()[]{}';
 const example3 = '(]';
 
-isValid(example1);
+isValid(example2);
