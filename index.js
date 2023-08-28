@@ -1,29 +1,27 @@
 //Leet code practice and debugging
 
-// Write a function to find the longest common prefix string amongst an array of strings.
+//Example 1:
 
-// If there is no common prefix, return an empty string "".
-
-// Example 1:
-
-// Input: strs = ["flower","flow","flight"]
-// Output: "fl"
+// Input: s = "()"
+// Output: true
 // Example 2:
 
-// Input: strs = ["dog","racecar","car"]
-// Output: ""
-// Explanation: There is no common prefix among the input strings.
+// Input: s = "()[]{}"
+// Output: true
+// Example 3:
 
-var longestCommonPrefix = function (strs) {
-  let commonLetters = '';
+// Input: s = "(]"
+// Output: false
 
-  if (strs.length === 0) {
-    return commonLetters;
+var isValid = function (s) {
+  for (let i = 0; i < s.length; i++) {
+    let current = s[i];
+    let next = s[i + 1];
+
+    if (current !== next) {
+      return false;
+    }
+
+    return true;
   }
 };
-
-let example1 = ['flower', 'flow', 'flight'];
-let example2 = ['dog', 'racecar', 'car'];
-
-longestCommonPrefix(example1);
-// longestCommonPrefix(example2);
