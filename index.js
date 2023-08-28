@@ -1,44 +1,53 @@
 //Leet code practice and debugging
+// You are given the heads of two sorted linked lists list1 and list2.
 
-//Example 1:
+// Merge the two lists into one sorted list. The list should be made by splicing together the nodes of the first two lists.
 
-// Input: s = "()"
-// Output: true
+// Return the head of the merged linked list.
+
+// Example 1:
+//  Input: list1 = [1,2,4], list2 = [1,3,4]
+//  Output: [1,1,2,3,4,4]
+
 // Example 2:
+//  Input: list1 = [], list2 = []
+//  Output: []
 
-// Input: s = "()[]{}"
-// Output: true
 // Example 3:
+//  Input: list1 = [], list2 = [0]
+//  Output: [0]
 
-// Input: s = "(]"
-// Output: false
+var mergeTwoLists = function (list1, list2) {
+  let i = 0;
+  let j = 0;
+  let k = 0;
+  let combinedList = [];
 
-//hint says to us a stack...
-//gave up trying to figure it out going to copy a solution and run through it to understand it better.
-
-var isValid = function (s) {
-  stack = [];
-  for (symbol of s) {
-    if (symbol === '(' || symbol === '[' || symbol === '{') {
-      stack.push(symbol);
+  while (i < list1.length && j < list2.length) {
+    if (list1[i] < list2[j]) {
+      combinedList[k] = list1[i];
+      i++;
     } else {
-      if (
-        !stack.length || //stack is empty
-        (symbol === ')' && stack[stack.length - 1] !== '(') ||
-        (symbol === ']' && stack[stack.length - 1] !== '[') ||
-        (symbol === '}' && stack[stack.length - 1] !== '{')
-      ) {
-        return false;
-      }
-      stack.pop();
+      combinedList[k] = list2[j];
+      j++;
     }
+    k++;
   }
 
-  return !stack.length;
+  for (; i < list1.length; i++) {
+    combinedList[k] = list1[i];
+    k++;
+  }
+
+  for (; j < list2.length; j++) {
+    combinedList[k] = list2[j];
+    k++;
+  }
+
+  return combinedList;
 };
 
-const example1 = '()';
-const example2 = '()[]{}';
-const example3 = '(]';
+list1 = [1, 2, 4];
+list2 = [1, 3, 4];
 
-isValid(example3);
+mergeTwoLists(list1, list2);
