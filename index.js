@@ -14,14 +14,17 @@
 // Output: false
 
 var isValid = function (s) {
+  let result = false;
+
   for (let i = 0; i < s.length; i++) {
     let current = s[i];
     let next = s[i + 1];
-
-    if (current !== next) {
-      return false;
-    }
-
-    return true;
   }
+  return result;
 };
+
+const example1 = '()';
+const example2 = '()[]{}';
+const example3 = '(]';
+
+isValid(example1);
