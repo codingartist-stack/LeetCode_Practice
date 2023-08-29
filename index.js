@@ -5,6 +5,8 @@
 
 // Return the head of the merged linked list.
 
+// {"val":1,"next":{"val":2,"next":{"val":4,"next":null}}}
+
 // Example 1:
 //  Input: list1 = [1,2,4], list2 = [1,3,4]
 //  Output: [1,1,2,3,4,4]
@@ -18,36 +20,35 @@
 //  Output: [0]
 
 var mergeTwoLists = function (list1, list2) {
-  let i = 0;
-  let j = 0;
-  let k = 0;
-  let combinedList = [];
+  let combinedList = {};
 
-  while (i < list1.length && j < list2.length) {
-    if (list1[i] < list2[j]) {
-      combinedList[k] = list1[i];
-      i++;
+  let current1 = list1;
+  let current2 = list2;
+
+  while (current1 !== null && current2 !== null) {
+    if (current1.val < current2.val) {
+      combinedList.push(current1.val);
+      current1 = current1.next;
     } else {
-      combinedList[k] = list2[j];
-      j++;
+      combinedList.push(current2.val);
+      current2 = current2.next;
     }
-    k++;
   }
 
-  for (; i < list1.length; i++) {
-    combinedList[k] = list1[i];
-    k++;
+  while (current1 !== null) {
+    combinedList.push(current1.val);
+    current1 = current1.next;
   }
 
-  for (; j < list2.length; j++) {
-    combinedList[k] = list2[j];
-    k++;
+  while (current2 !== null) {
+    combinedList.push(current2.val);
+    current2 = current2.next;
   }
 
   return combinedList;
 };
 
-list1 = [1, 2, 4];
-list2 = [1, 3, 4];
+list1 = { val: 1, next: { val: 2, next: { val: 4, next: null } } };
+list2 = { val: 1, next: { val: 3, next: { val: 4, next: null } } };
 
 mergeTwoLists(list1, list2);
