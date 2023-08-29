@@ -1,12 +1,11 @@
 //Leet code practice and debugging
 
-/**
- * Definition for singly-linked list.
- * function ListNode(val, next) {
- *     this.val = (val===undefined ? 0 : val)
- *     this.next = (next===undefined ? null : next)
- * }
- */
+// Definition for singly-linked list.
+function ListNode(val, next) {
+  this.val = val === undefined ? 0 : val;
+  this.next = next === undefined ? null : next;
+}
+
 /**
  * @param {ListNode} list1
  * @param {ListNode} list2
@@ -30,5 +29,7 @@ var mergeTwoLists = function (list1, list2) {
   return tempNode.next;
 };
 
-let listOne = [1, 2, 4];
-let listTwo = [1, 3, 4];
+let listOne = { val: 1, next: { val: 2, next: { val: 4, next: null } } };
+let listTwo = { val: 1, next: { val: 3, next: { val: 4, next: null } } };
+
+mergeTwoLists(listOne, listTwo);
