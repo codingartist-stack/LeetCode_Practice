@@ -46,45 +46,23 @@
 //  * @param {number[]} nums
 //  * @return {number}
 //  */
-// var removeDuplicates = function (nums) {
-//   let k = nums.length;
+var removeDuplicates = function (nums) {
+  let getAxed = 0;
+  let pointerOne = 0;
+  let pointerTwo = pointerOne + 1;
 
-//   for (let i = 0; i < k; i++) {
-//     if (nums[i] == nums[i + 1]) {
-//       nums.splice(i, 1);
-//       k--;
-//     }
-//   }
-//   return nums;
-// };
-
-// let nums = [1, 1, 2];
-// console.log(removeDuplicates(nums));
-
-//LEARNING TWO POINTER TECHNIQUE
-
-// sum of two
-//assume you have a sorted array
-
-let array = [2, 3, 4, 5];
-// they add up to 6
-
-function two_sum(arr, target) {
-  let pointer1 = 0;
-  let pointer2 = arr.length - 1;
-
-  while (pointer1 < pointer2) {
-    let sum = arr[pointer1] + arr[pointer2];
-
-    if (sum == target) {
-      return `${arr[pointer1]}, ${arr[pointer2]}`;
-    } else if (sum < target) {
-      pointer1++;
+  while (pointerOne < nums.length) {
+    if (nums[pointerOne] !== nums[pointerTwo]) {
+      nums.splice(pointerOne + 1, getAxed);
+      pointerOne = pointerTwo;
+      pointerTwo = pointerTwo + 1;
     } else {
-      pointer2--;
+      pointerTwo++;
+      getAxed++;
     }
   }
-  return false;
-}
+  return nums;
+};
 
-console.log(two_sum(array, 6));
+let nums = [1, 1, 2];
+console.log(removeDuplicates(nums));
