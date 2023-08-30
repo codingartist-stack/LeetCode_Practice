@@ -1,35 +1,34 @@
 //Leet code practice and debugging
 
-// Definition for singly-linked list.
-function ListNode(val, next) {
-  this.val = val === undefined ? 0 : val;
-  this.next = next === undefined ? null : next;
-}
+// The judge will test your solution with the following code:
+
+// int[] nums = [...]; // Input array
+// int[] expectedNums = [...]; // The expected answer with correct length
+
+// int k = removeDuplicates(nums); // Calls your implementation
+
+// assert k == expectedNums.length;
+// for (int i = 0; i < k; i++) {
+//     assert nums[i] == expectedNums[i];
+// }
+// If all assertions pass, then your solution will be accepted.
+
+// Example 1:
+
+// Input: nums = [1,1,2]
+// Output: 2, nums = [1,2,_]
+// Explanation: Your function should return k = 2, with the first two elements of nums being 1 and 2 respectively.
+// It does not matter what you leave beyond the returned k (hence they are underscores).
+
+// Example 2:
+
+// Input: nums = [0,0,1,1,1,2,2,3,3,4]
+// Output: 5, nums = [0,1,2,3,4,_,_,_,_,_]
+// Explanation: Your function should return k = 5, with the first five elements of nums being 0, 1, 2, 3, and 4 respectively.
+// It does not matter what you leave beyond the returned k (hence they are underscores).
 
 /**
- * @param {ListNode} list1
- * @param {ListNode} list2
- * @return {ListNode}
+ * @param {number[]} nums
+ * @return {number}
  */
-var mergeTwoLists = function (list1, list2) {
-  let tempNode = new ListNode(0, null);
-  let currentNode = tempNode;
-
-  while (list1 !== null && list2 !== null) {
-    if (list1.val < list2.val) {
-      currentNode.next = list1;
-      list1 = list1.next;
-    } else {
-      currentNode.next = list2;
-      list2 = list2.next;
-    }
-    currentNode = currentNode.next;
-  }
-  currentNode.next = list1 || list2;
-  return tempNode.next;
-};
-
-let listOne = { val: 1, next: { val: 2, next: { val: 4, next: null } } };
-let listTwo = { val: 1, next: { val: 3, next: { val: 4, next: null } } };
-
-mergeTwoLists(listOne, listTwo);
+var removeDuplicates = function (nums) {};
