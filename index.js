@@ -27,20 +27,64 @@
 // Explanation: Your function should return k = 5, with the first five elements of nums being 0, 1, 2, 3, and 4 respectively.
 // It does not matter what you leave beyond the returned k (hence they are underscores).
 
-/**
- * @param {number[]} nums
- * @return {number}
- */
-var removeDuplicates = function (nums) {
-  let array = new Set(nums);
-  let sorted = [];
+// /**
+//  * @param {number[]} nums
+//  * @return {number}
+//  */
+// var removeDuplicates = function (nums) {
+//   let array = new Set(nums);
+//   let sorted = [];
 
-  array.forEach((element) => {
-    sorted.push(element);
-  });
+//   array.forEach((element) => {
+//     sorted.push(element);
+//   });
 
-  return sorted;
-};
+//   return sorted;
+// };
 
-let nums = [1, 1, 2];
-console.log(removeDuplicates(nums));
+// /**
+//  * @param {number[]} nums
+//  * @return {number}
+//  */
+// var removeDuplicates = function (nums) {
+//   let k = nums.length;
+
+//   for (let i = 0; i < k; i++) {
+//     if (nums[i] == nums[i + 1]) {
+//       nums.splice(i, 1);
+//       k--;
+//     }
+//   }
+//   return nums;
+// };
+
+// let nums = [1, 1, 2];
+// console.log(removeDuplicates(nums));
+
+//LEARNING TWO POINTER TECHNIQUE
+
+// sum of two
+//assume you have a sorted array
+
+let array = [2, 3, 4, 5];
+// they add up to 6
+
+function two_sum(arr, target) {
+  let pointer1 = 0;
+  let pointer2 = arr.length - 1;
+
+  while (pointer1 < pointer2) {
+    let sum = arr[pointer1] + arr[pointer2];
+
+    if (sum == target) {
+      return `${arr[pointer1]}, ${arr[pointer2]}`;
+    } else if (sum < target) {
+      pointer1++;
+    } else {
+      pointer2--;
+    }
+  }
+  return false;
+}
+
+console.log(two_sum(array, 6));
