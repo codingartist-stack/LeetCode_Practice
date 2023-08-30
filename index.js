@@ -31,4 +31,16 @@
  * @param {number[]} nums
  * @return {number}
  */
-var removeDuplicates = function (nums) {};
+var removeDuplicates = function (nums) {
+  let array = new Set(nums);
+  let sorted = [];
+
+  array.forEach((element) => {
+    sorted.push(element);
+  });
+
+  return sorted;
+};
+
+let nums = [1, 1, 2];
+console.log(removeDuplicates(nums));
