@@ -54,8 +54,9 @@ var removeDuplicates = function (nums) {
   while (pointerOne < nums.length) {
     if (nums[pointerOne] !== nums[pointerTwo]) {
       nums.splice(pointerOne + 1, getAxed);
-      pointerOne = pointerTwo;
-      pointerTwo = pointerTwo + 1;
+      pointerOne++;
+      pointerTwo = pointerOne + 1;
+      getAxed = 0;
     } else {
       pointerTwo++;
       getAxed++;
@@ -64,5 +65,5 @@ var removeDuplicates = function (nums) {
   return nums;
 };
 
-let nums = [1, 1, 2];
+let nums = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4];
 console.log(removeDuplicates(nums));
