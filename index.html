@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <style>
+      body {
+        background-color: #66284a;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        place-content: center;
+        /* transform: rotate(45deg); */
+      }
+
+      div {
+        width: 100px;
+        height: 100px;
+        background: #fdfbf8;
+        clip-path: circle(50% at 50% 50%);
+        display: grid;
+        place-items: center;
+        position: relative;
+      }
+
+      div:nth-child(1) {
+        justify-self: end;
+        background: #f0cd48;
+        transform: rotate(45deg);
+      }
+      div:nth-child(2) {
+        background: #d669ec;
+        transform: rotate(135deg);
+      }
+      div:nth-child(3) {
+        justify-self: end;
+        background: #d86f45;
+        transform: rotate(-45deg);
+      }
+      div:nth-child(4) {
+        transform: rotate(-135deg);
+      }
+
+      div::after {
+        content: ' ';
+        position: absolute;
+        width: 65px;
+        height: 65px;
+        background-color: #66284a;
+        clip-path: circle(50% at 50% 50%);
+      }
+      div::before {
+        content: ' ';
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        background-color: #66284a;
+        top: 50px;
+        left: 50px;
+      }
+    </style>
+  </body>
+</html>
